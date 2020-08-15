@@ -10,11 +10,12 @@
   </head>
 
   <body>
-    <div>
-      <% if logged_in?%>
-        <%= link_to "Log Out", '/logout', method: :delete %>
-      <% end %>
-    </div>
+    <nav><%= navbar %></nav>
+
+    <% flash.each do |k,v| %>
+      <p><%= v %></p>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
