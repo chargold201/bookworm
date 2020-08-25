@@ -15,6 +15,10 @@ class UsersController < ApplicationController
       redirect_to signup_path
     end
   end
+
+  def show
+    @user = User.find_by(id: params[:id])
+  end
 end
 
 private
