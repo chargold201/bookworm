@@ -1,0 +1,15 @@
+<h1><%= @book.title %></h1>
+
+<h3>Reviews</h3>
+
+<% if @book.reviews.empty? %>
+  <p>Sorry, this book doesn't have any reviews yet!</p>
+<% else%>
+  <ul>
+    <% @book.reviews.each do |review| %>
+      <li>
+        <%= link_to review.title, review_path(review) %> - a review by <%= link_to review.user.name, user_path(review.user) %>
+      </li>
+    <% end%>
+  </ul>
+<% end %>
