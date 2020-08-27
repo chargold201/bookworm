@@ -1,1 +1,15 @@
 <h1><%= @user.name %></h1>
+
+<h3>My Reviews</h3>
+
+<% if @user.reviews.empty? %>
+  <p>Sorry, I haven't written any reviews yet!</p>
+  <% else%>
+    <ul>
+      <% @user.reviews.where(user_id: @user.id).each do |review| %>
+        <li>
+          <%= link_to review.title, review_path(review) %> - a review of <%= link_to review.book.title, book_path(review.book) %> by <%= review.book.author %>
+        </li>
+      <% end %>
+    </ul>
+<% end%>
