@@ -7,9 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      session[:user_id] = user.id
-      flash[:message] = "Hello, #{user.name}"
-      redirect_to reviews_path
+      log_in(user)
     else
       # flash message depending on what was wrong
       redirect_to signup_path

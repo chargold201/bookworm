@@ -11,9 +11,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:message] = "Hello, #{user.name}!"
-      redirect_to reviews_path
+      log_in(user)
     else
       flash[:danger] = "Incorrect login info, please try again"
       redirect_to login_path

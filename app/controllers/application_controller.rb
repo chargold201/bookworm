@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path if !logged_in?
   end
 
+  def log_in(user)
+    session[:user_id] = user.id
+    flash[:message] = "Hello, #{user.name}!"
+    redirect_to reviews_path
+  end
+
 end
