@@ -1,1 +1,9 @@
 <h1>Reviews</h1>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= link_to review.title, review_path(review) %> - <%= link_to review.user.name, user_path(review.user) %>'s review of <%= link_to review.book.title, book_path(review.book) %> by <%= review.book.author %>
+    </li>
+  <% end%>
+</ul>

@@ -4,7 +4,6 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :author
       t.string :isbn
-      t.belongs_to :genre, null: false, foreign_key: true
 
       t.timestamps
     end
