@@ -1,5 +1,7 @@
 <h1>Books</h1>
 
+<p>Can't find the book you're looking for? Add it <%= link_to "here", new_book_path %>!</p>
+
 <ul>
   <% @books.each do |book| %>
     <li>
