@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :genres
   root 'sessions#home'
 
   get '/login' => 'sessions#new'
