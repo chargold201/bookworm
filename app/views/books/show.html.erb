@@ -3,6 +3,8 @@
 <p>Author: <%= @book.author %></p>
 <p>Genre: <%= @book.genre.name %></p>
 
+<p><%= link_to "Edit this book", edit_book_path(@book) %></p>
+
 <h3>Reviews</h3>
 
 <%= link_to "Write a review for this book", new_book_review_path(@book) %>
