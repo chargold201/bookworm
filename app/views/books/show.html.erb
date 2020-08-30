@@ -5,7 +5,7 @@
 
 <h3>Reviews</h3>
 
-<%= link_to "Write a review for this book", new_review_path %>
+<%= link_to "Write a review for this book", new_book_review_path(@book) %>
 
 <% if @book.reviews.empty? %>
   <p>Sorry, this book doesn't have any reviews yet!</p>
