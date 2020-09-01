@@ -1,4 +1,8 @@
-<h1>Reviews</h1>
+<% if params[:user_id] %>
+  <h1><%= @user.name %>'s Reviews</h1>
+<% else%>
+  <h1>Reviews</h1>
+<% end%>
 
 <ul>
   <% @reviews.each do |review| %>

@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     else
       # flash message with errors
       flash[:danger] = @book.errors.full_messages
-      redirect_to new_book_path
+      render :new
     end
   end
 
@@ -32,7 +32,12 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     @book.update(title: params[:book][:title], author: params[:book][:author], genre_id: params[:book][:genre_id], isbn: params[:book][:isbn])
-    redirect_to book_path(@book)
+    if @book.save
+      redirect_to book_path(@book)
+    else
+      flash[:danger] = @book.errors.full_messages
+      render :edit
+    end
   end
 
   private

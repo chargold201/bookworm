@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      log_in(user)
+    @user = User.new(user_params)
+    if @user.save
+      log_in(@user)
     else
       # flash message depending on what was wrong
-      redirect_to signup_path
+      render :new
     end
   end
 

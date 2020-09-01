@@ -4,6 +4,9 @@ class ReviewsController < ApplicationController
   def index
     if params[:book_id]
       @reviews = Book.find(params[:book_id]).reviews
+    elsif params[:user_id]
+      @user = User.find(params[:user_id])
+      @reviews = User.find(params[:user_id]).reviews
     else
       @reviews = Review.all
     end
@@ -24,7 +27,7 @@ class ReviewsController < ApplicationController
       redirect_to review_path(@review)
     else
       flash[:danger] = @review.errors.full_messages
-      redirect_to root_path
+      render :new
     end
   end
 
@@ -35,7 +38,12 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(title: params[:review][:title], content: params[:review][:content])
-    redirect_to review_path(@review)
+    if @review.save
+      redirect_to review_path(@review)
+    else
+      flash[:danger] = @review.errors.full_messages
+      render :edit
+    end
   end
 
   private

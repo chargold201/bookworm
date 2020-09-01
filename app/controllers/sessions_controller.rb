@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      log_in(user)
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      log_in(@user)
     else
       flash[:danger] = "Incorrect login info, please try again"
-      redirect_to login_path
+      render :new
     end
   end
 
