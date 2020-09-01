@@ -4,5 +4,5 @@ class Book < ApplicationRecord
   has_many :users, through: :reviews
 
   validates_presence_of [:title, :author, :isbn]
-  validates_uniqueness_of :isbn
+  validates :isbn, numericality: { only_integer: true }
 end
