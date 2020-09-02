@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     else
       @reviews = Review.all
     end
+    @reviews = @reviews.order(:review_timestamp).reverse
   end
 
   def show
