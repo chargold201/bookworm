@@ -2,6 +2,14 @@
 
 <p>Can't find the book you're looking for? Add it <%= link_to "here", new_book_path %>!</p>
 
+<div>
+  <h3>Filter books:</h3>
+  <%= form_tag("/books", method: "get") do %>
+    <%= select_tag "genre", options_from_collection_for_select(Genre.all, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
 <ul>
   <% @books.each do |book| %>
     <li>
