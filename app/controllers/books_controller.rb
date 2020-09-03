@@ -2,11 +2,15 @@ class BooksController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
+    @genres = Genre.all
+    
     if !params[:genre].blank?
-      @books = Book.where(genre: params[:genre])
+      @books = Book.by_genre(params[:genre])
     else
-      @books = Book.all.order(:book_timestamp).reverse
+      @books = Book.all
     end
+
+    @books = @books.reverse
   end
 
   def show

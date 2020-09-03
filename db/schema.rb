@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2020_08_28_203730) do
     t.string "author"
     t.string "isbn"
     t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_books_on_genre_id"
   end
 
