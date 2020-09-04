@@ -3,11 +3,15 @@ class ReviewsController < ApplicationController
 
   def index
     if params[:book_id]
-      @reviews = Book.find(params[:book_id]).reviews
+      @book = Book.find(params[:book_id])
+      @title = "Reviews of #{ @book.title }"
+      @reviews = @book.reviews
     elsif params[:user_id]
       @user = User.find(params[:user_id])
+      @title = "#{ @user.name }'s Reviews"
       @reviews = User.find(params[:user_id]).reviews
     else
+      @title = "All Reviews"
       @reviews = Review.all
     end
     @reviews = @reviews.order(:review_timestamp).reverse

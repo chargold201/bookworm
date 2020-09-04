@@ -6,14 +6,5 @@
 <p><%= link_to "Edit this book", edit_book_path(@book) %></p>
 <p><%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} %></p>
 
-<h3>Reviews</h3>
-
-<%= link_to "Write a review for this book", new_book_review_path(@book) %>
-
-<ul>
-  <% @book.reviews.each do |review| %>
-    <li>
-      <%= link_to review.title, review_path(review) %> - a review by <%= link_to review.user.name, user_path(review.user) %>
-    </li>
-  <% end%>
-</ul>
+<p><%= link_to "Write a review for this book", new_book_review_path(@book) %></p>
+<p><%= link_to "View all reviews for this book", book_reviews_path(@book) %></p>

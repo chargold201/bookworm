@@ -1,13 +1,17 @@
-<% if params[:user_id] %>
-  <h1><%= @user.name %>'s Reviews</h1>
-<% else%>
-  <h1>Reviews</h1>
-<% end%>
+<h1><%= @title %></h1>
 
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      <%= link_to review.title, review_path(review) %> - <%= link_to review.user.name, user_path(review.user) %>'s review of <%= link_to review.book.title, book_path(review.book) %> by <%= review.book.author %>
+      <% if params[:book_id] %>
+        <%= link_to review.title, review_path(review) %> - a review by <%= link_to review.user.name, user_path(review.user) %>
+      <% elsif params[:user_id] %>
+        <%= link_to review.title, review_path(review) %> - a review of <%= link_to review.book.title, book_path(review.book) %> by <%= review.book.author %>
+      <% else %>
+        <%= link_to review.title, review_path(review) %> - <%= link_to review.user.name, user_path(review.user) %>'s review of <%= link_to review.book.title, book_path(review.book) %> by <%= review.book.author %>
+      <% end%>
     </li>
   <% end%>
 </ul>
+
+
