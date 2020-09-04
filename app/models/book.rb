@@ -6,7 +6,5 @@ class Book < ApplicationRecord
   validates_presence_of [:title, :author, :isbn]
   validates :isbn, numericality: { only_integer: true }, uniqueness: true
 
-  def self.by_genre(genre_id)
-    where(genre: genre_id)
-  end
+  scope :by_genre, -> genre { where(genre: genre) }
 end
