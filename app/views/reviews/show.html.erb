@@ -1,6 +1,7 @@
 <h1><%= @review.title %></h1>
 
 <p><%= link_to "Edit this review", edit_review_path(@review) %></p>
+<p><%= link_to "Delete this review", review_path(@review), method: :delete, data: { confirm: "Are you sure?"} %></p>
 
 <h3><%= link_to @review.user.name, user_path(@review.user) %>'s review of <%= link_to @review.book.title, book_path(@review.book) %> by <%= @review.book.author %></h3>
 
