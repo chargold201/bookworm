@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 genre_list = [
-  "Other",
   "Fantasy",
   "Mystery",
   "Science Fiction",
@@ -16,7 +15,8 @@ genre_list = [
   "Classics",
   "Young Adult",
   "Contemporary Fiction",
-  "Nonfiction"
+  "Nonfiction",
+  "Other"
 ]
 
 genre_list.each do |name|
