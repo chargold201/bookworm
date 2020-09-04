@@ -22,7 +22,7 @@
   <%= f.text_field :author %>
   <br>
   <%= f.label :genre_id %>
-  <%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "Choose a genre") %>
   <br>
   <%= f.label :isbn %>
   <%= f.text_field :isbn %>
